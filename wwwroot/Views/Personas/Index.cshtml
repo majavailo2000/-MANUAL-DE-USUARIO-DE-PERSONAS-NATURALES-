@@ -1,0 +1,39 @@
+@model IEnumerable<Persona>
+
+@{
+    ViewData["Title"] = "Personas Registradas";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<a class="btn btn-primary mb-3" href="@Url.Action("Create")">Registrar Persona</a>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>DUI</th>
+            <th>Departamento</th>
+            <th>Fotografía</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var persona in Model)
+        {
+            <tr>
+                <td>@persona.NombreCompleto</td>
+                <td>@persona.DUI</td>
+                <td>@persona.Departamento</td>
+                <td>
+                    <img src="@persona.FotoRuta" alt="Foto" width="100" height="100" style="object-fit:cover;" />
+                </td>
+                <td>
+                    <form asp-action="Delete" asp-route-id="@persona.Id" method="post" onsubmit="return confirm('¿Seguro que deseas eliminar esta persona?');">
+                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

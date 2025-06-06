@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Redireccionando a RNPN";
+}
+
+<div class="text-center">
+    <h1 class="display-4">BIENVENIDO</h1>
+    <p>Redirigiendo al sitio oficial del RNPN...</p>
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Cargando...</span>
+    </div>
+</div>
+
+@section Scripts {
+        <script>
+            
+            setTimeout(function() {
+                window.location.href = "https://www.rnpn.gob.sv/";
+            }, 3000);
+        </script>
+}
